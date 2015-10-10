@@ -1,0 +1,13 @@
+################################################################################
+#               Autostart
+################################################################################
+exec owncloud
+exec wicd-gtk -t
+
+#exec ./scripts/fix-screens.sh
+#exec sudo cpupower frequency-set -u 800mhz
+
+exec telegram
+exec sudo fstrim /
+exec sudo fstrim /home
+exec --no-startup-id nitrogen --restore

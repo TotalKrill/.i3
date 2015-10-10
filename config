@@ -1,0 +1,251 @@
+################################################################################
+#               Autostart
+################################################################################
+exec owncloud
+exec wicd-gtk -t
+
+#exec ./scripts/fix-screens.sh
+#exec sudo cpupower frequency-set -u 800mhz
+
+exec telegram
+exec sudo fstrim /
+exec sudo fstrim /home
+exec --no-startup-id nitrogen --restore
+################################################################################
+#       Keyboard settings                                                      #
+################################################################################
+#set the keyboard shortcuts for moving and such
+
+set $mod Mod1
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation (h is occupied)
+bindsym $mod+z split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will grow the window’s width.
+        # Pressing right will shrink the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize grow width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize shrink width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # Will normalize windows
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+# change size of windows
+bindsym $mod+r mode "resize"
+################################################################################
+#              Executables                                                     #
+################################################################################
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# start a terminal
+bindsym $mod+Return exec xfce4-terminal
+
+bindsym $mod+Shift+p exec "sudo pm-suspend"
+bindsym $mod+< exec "i3lock -c 000000 -e"
+
+### Shortcuts ###
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset 'Master' 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset 'Master' 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer sset 'Master' toggle
+bindsym XF86AudioPlay exec --no-startup-id playcontrols toggle
+bindsym XF86AudioStop exec --no-startup-id playcontrols stop
+bindsym XF86AudioPrev exec --no-startup-id playcontrols prev
+bindsym XF86AudioNext exec --no-startup-id playcontrols next
+bindsym XF86Calculator exec --no-startup-id gnome-calculator
+bindsym XF86TouchpadToggle exec --no-startup-id /home/luca/Documenti/toggletouchpad
+
+#bindsym Print exec 'scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png'
+bindsym Print exec maim
+################################################################################
+#           Look and feel                                                      #
+################################################################################
+# Colors and other looks
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+# font pango:DejaVu Sans Mono 10
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+#new looks
+new_window pixel 1
+
+set $default_gaps_inner 12
+set $default_gaps_outer 0
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+
+set $FOCUS #989898
+set $UNFOCUS #3c3b37
+
+# Layout colors         bord    bg      text    indicator (split)
+client.focused          $FOCUS $FOCUS $UNFOCUS $FOCUS
+client.focused_inactive $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
+client.unfocused        $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
+client.urgent           $FOCUS $FOCUS $FOCUS $UNFOCUS
+client.background       $UNFOCUS
+
+### Borders ###
+new_window pixel 4
+new_float pixel 4
+
+bar {
+        tray_output $main
+        status_command i3status
+}
+################################################################################
+#       Workspaces                                                             #
+################################################################################
+# Here define workspaces and align them to outputs
+# also define the default workspace for programs
+
+## workspace variables
+#
+set     $work   1
+set     $chats  2
+set     $web    3
+set     $files  4
+set     $media  5
+
+## workspace names
+#
+
+
+## display names
+# set   <variable> output
+set     $main   DVI-I-1
+set     $side   DVI-D-0
+
+## workspace display assignment
+# workspace <workspace>  output <output>
+workspace $work     output $main
+workspace $files    output $main
+workspace $web      output $main
+workspace $chats    output $side
+
+## workspace layout start
+#
+
+## assign programs to workspace
+#
+assign [class="Telegram"]   $chats
+assign [class="Skype"]      $chats
+assign [class="Mumble"]     $chats
+assign [class="Firefox"]    $web
+
+## window floating enable
+#assign how some windows
+for_window [class="Thunar"] floating enable
+
+
+
+
+
+
+
