@@ -6,15 +6,15 @@
 
 ## workspace variables
 #
-set     $work   1
+set     $web    1
 set     $chats  2
-set     $web    3
+set     $work   3
 set     $files  4
 set     $media  5
+set     $games  6
 
 ## workspace names
 #
-
 
 ## display names
 # set   <variable> output
@@ -26,6 +26,7 @@ set     $side   DVI-D-0
 workspace $work     output $main
 workspace $files    output $main
 workspace $web      output $main
+workspace $games    output $main
 workspace $chats    output $side
 
 ## workspace layout start
@@ -37,14 +38,9 @@ assign [class="Telegram"]   $chats
 assign [class="Skype"]      $chats
 assign [class="Mumble"]     $chats
 assign [class="Firefox"]    $web
+assign [class="Steam"]      $games
 
 ## window floating enable
 #assign how some windows
 for_window [class="Thunar"] floating enable
-
-
-
-
-
-
 

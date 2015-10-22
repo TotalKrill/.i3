@@ -135,7 +135,7 @@ bindsym $mod+r mode "resize"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id "dmenu_run -nb black -p run"
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 
@@ -155,6 +155,7 @@ bindsym XF86TouchpadToggle exec --no-startup-id /home/luca/Documenti/toggletouch
 
 #bindsym Print exec 'scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png'
 bindsym Print exec maim
+bindsym Shift+Print exec maim -i $(xdotool getactivewindow)
 ################################################################################
 #           Look and feel                                                      #
 ################################################################################
@@ -207,15 +208,15 @@ bar {
 
 ## workspace variables
 #
-set     $work   1
+set     $web    1
 set     $chats  2
-set     $web    3
+set     $work   3
 set     $files  4
 set     $media  5
+set     $games  6
 
 ## workspace names
 #
-
 
 ## display names
 # set   <variable> output
@@ -227,6 +228,7 @@ set     $side   DVI-D-0
 workspace $work     output $main
 workspace $files    output $main
 workspace $web      output $main
+workspace $games    output $main
 workspace $chats    output $side
 
 ## workspace layout start
@@ -238,14 +240,9 @@ assign [class="Telegram"]   $chats
 assign [class="Skype"]      $chats
 assign [class="Mumble"]     $chats
 assign [class="Firefox"]    $web
+assign [class="Steam"]      $games
 
 ## window floating enable
 #assign how some windows
 for_window [class="Thunar"] floating enable
-
-
-
-
-
-
 
