@@ -174,7 +174,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # finds out, if available)
 
 #new looks
-new_window pixel 1
+new_window pixel 2
 
 set $default_gaps_inner 12
 set $default_gaps_outer 0
@@ -182,19 +182,20 @@ gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
 
-set $FOCUS #989898
-set $UNFOCUS #3c3b37
+set $FOCUS      #989898
+set $UNFOCUS    #3c3b37
+set $GREEN      #00660c
 
 # Layout colors         bord    bg      text    indicator (split)
-client.focused          $FOCUS $FOCUS $UNFOCUS $FOCUS
+client.focused          $GREEN $GREEN $UNFOCUS $FOCUS
 client.focused_inactive $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
 client.unfocused        $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
 client.urgent           $FOCUS $FOCUS $FOCUS $UNFOCUS
 client.background       $UNFOCUS
 
 ### Borders ###
-new_window pixel 4
-new_float pixel 4
+new_window pixel 6
+new_float pixel 6
 
 bar {
         tray_output $main
